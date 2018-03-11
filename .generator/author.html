@@ -1,0 +1,14 @@
+<html>
+<head>
+  <title>{{ author.name }}</title>
+</head>
+<body>
+  <p><a href="../index.html">&lt;&lt; Вернуться в библиотеку</a></p>
+  <h1>{{ author.name }}</h1>
+  <h2>Произведения</h2>
+  <ul>
+    {% for book in author.books %}<li><a href="../books/{{ book.id }}.html">{{ book.title }}</a></li>{% endfor %}
+  </ul>
+  <div>{{ author.bio }}</div>
+</body>
+</html>
