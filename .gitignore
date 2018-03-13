@@ -1,6 +1,7 @@
 .gradle
 /build/
 *.log
+/public_html/
 
 # Ignore Gradle GUI config
 gradle-app.setting
