@@ -8,9 +8,9 @@
     <thead><tr><th>Название книги</th><th>Автор(ы)</th><tr></thead>
     <tbody>{% for book in books %}
       <tr>
-        <td><a href="books/{{ book.id }}.html">{{ book.title }}</a></td>
+        <td><a href="books/{{ book._id }}.html">{{ book.title }}</a></td>
         <td>{% for author in book.authors %}
-          <a href="authors/{{ author.id }}.html">{{ author.name }}</a>
+          <a href="authors/{{ author._id }}.html">{{ author.name }}</a>
         {% endfor %}</td>
       </tr>
     {% endfor %}</tbody>

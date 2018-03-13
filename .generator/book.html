@@ -5,7 +5,7 @@
 <body>
   <p><a href="../index.html">&lt;&lt; Вернуться в библиотеку</a></p>
   <h1>{{ book.title }}</h1>
-  <p>Автор(ы): {% for author in book.authors %}<a href="../authors/{{ author.id }}.html">{{ author.name }}</a>{% endfor %}</p>
+  <p>Автор(ы): {% for author in book.authors %}<a href="../authors/{{ author._id }}.html">{{ author.name }}</a>{% endfor %}</p>
   <h2>Цитата</h2>
   <div>{{ book.citation }}</div>
 </body>

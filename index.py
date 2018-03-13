@@ -1,7 +1,7 @@
 #!python
 
 import os
-import jsonpickle
+from pony.orm import *
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 import web
 
@@ -9,11 +9,22 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-with open('library.json') as lib:
-    library = jsonpickle.decode(lib.read())
+db = Database()
 
-all_books = library['books']
-all_authors = library['authors']
+class Book(db.Entity):
+    _id = PrimaryKey(int)
+    title = Required(str)
+    citation = Required(LongStr)
+    authors = Set('Author')
+
+class Author(db.Entity):
+    _id = PrimaryKey(int)
+    name = Required(str)
+    bio = Required(LongStr)
+    books = Set('Book')
+
+db.bind(provider='mysql', host='localhost', user='root', password='', db='library')
+db.generate_mapping(create_tables=False)
 
 env = Environment(loader=FileSystemLoader('.generator'))
 
@@ -30,16 +41,19 @@ urls = (
 app = web.application(urls, globals())
 
 class index:
+    @db_session
     def GET(self):
-        return main_template.render(books=all_books)
+        return main_template.render(books=Book.select())
 
 class book:
+    @db_session
     def GET(self, book_id):
-        return book_template.render(book=next(book for book in all_books if book['id'] == book_id))
+        return book_template.render(book=Book.get(_id=book_id))
 
 class author:
+    @db_session
     def GET(self, author_id):
-        return author_template.render(author=all_authors[author_id])
+        return author_template.render(author=Author.get(_id=author_id))
 
 if __name__ == '__main__':
     app.run()
