@@ -7,7 +7,7 @@
   <h1>{{ author.name }}</h1>
   <h2>Произведения</h2>
   <ul>
-    {% for book in author.books %}<li><a href="../books/{{ book._id }}.html">{{ book.title }}</a></li>{% endfor %}
+    {% for book in author.books %}<li><a href="../book/{{ book._id }}">{{ book.title }}</a></li>{% endfor %}
   </ul>
   <div>{{ author.bio }}</div>
 </body>
