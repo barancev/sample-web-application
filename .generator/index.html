@@ -13,7 +13,12 @@
           <a href="author/{{ author._id }}">{{ author.name }}</a>
         {% endfor %}</td>
       </tr>
-    {% endfor %}</tbody>
+    {% endfor %}
+      <tr>
+        <td><hr><a href="add_book">Добавить книгу</a></td>
+        <td><hr><a href="add_author">Добавить автора</a></td>
+      </tr>
+    </tbody>
   </table>
 </body>
 </html>

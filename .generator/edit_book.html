@@ -1,0 +1,24 @@
+<html>
+<head>
+  <title>Редактирование книги</title>
+</head>
+<body>
+  <p><a href="../index.html">&lt;&lt; Вернуться в библиотеку</a></p>
+  <h1>Редактирование книги</h1>
+  <form method="POST" action="../edit_book">
+    <input type="hidden" name="book_id" value="{{ book._id }}">
+    <table>
+      <tr><td>Название:</td><td><input type="text" name="title" size="100" value="{{ book.title }}"></td></tr>
+      <tr><td>Автор:</td><td><select name="authors" multiple>
+        {% for author in authors %}
+        <option value="{{ author._id }}" {% if author._id in book_authors %}selected{% endif %}>{{ author.name }}</option>
+        {% endfor %}
+      </select></td></tr>
+      <tr><td>Цитата:</td><td><textarea name="citation" cols="100" rows="30">{{ book.citation }}</textarea></td></tr>
+      <tr><td></td><td><input type="submit" name="submit" value="Сохранить"></td></tr>
+      <tr></tr>
+      <tr></tr>
+    </table>
+  </form>
+</body>
+</html>

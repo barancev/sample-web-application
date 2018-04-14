@@ -8,5 +8,7 @@
   <p>Автор(ы): {% for author in book.authors %}<a href="../author/{{ author._id }}">{{ author.name }}</a>{% endfor %}</p>
   <h2>Цитата</h2>
   <div>{{ book.citation }}</div>
+  <div><a href="../edit_book/{{ book._id }}">Редактировать</a></div>
+  <div><a href="../delete_book/{{ book._id }}">Удалить</a></div>
 </body>
 </html>

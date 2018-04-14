@@ -10,5 +10,7 @@
     {% for book in author.books %}<li><a href="../book/{{ book._id }}">{{ book.title }}</a></li>{% endfor %}
   </ul>
   <div>{{ author.bio }}</div>
+  <div><a href="../edit_author/{{ author._id }}">Редактировать</a></div>
+  <div><a href="../delete_author/{{ author._id }}">Удалить</a></div>
 </body>
 </html>

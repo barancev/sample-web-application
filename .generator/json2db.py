@@ -17,13 +17,13 @@ all_authors = library['authors']
 db = Database()
 
 class Book(db.Entity):
-    _id = PrimaryKey(int)
+    _id = PrimaryKey(int, auto=True)
     title = Required(str)
     citation = Required(LongStr)
     authors = Set('Author')
 
 class Author(db.Entity):
-    _id = PrimaryKey(int)
+    _id = PrimaryKey(int, auto=True)
     name = Required(str)
     bio = Required(LongStr)
     books = Set('Book')
